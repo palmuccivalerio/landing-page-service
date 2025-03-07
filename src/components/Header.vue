@@ -1,4 +1,3 @@
-<!-- src/components/Header.vue -->
 <template>
   <header class="header">
     <div class="logo">CODECIRCUS</div>
@@ -10,9 +9,6 @@
         <li><a href="#">Contatti</a></li>
       </ul>
     </nav>
-    <div class="social-icons">
-
-    </div>
   </header>
 </template>
 
@@ -21,14 +17,14 @@ export default {
   name: "Header",
   data() {
     return {
-      isMenuOpen: false,
+      isMenuOpen: false
     };
   },
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -36,71 +32,63 @@ export default {
 @import '../assets/styles/variables.scss';
 
 .header {
+  background-color: $primary-color;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background-color: $primary-color;
+  padding: 1rem;
 
   .logo {
-    font-size: 24px;
+    color: #fff;
     font-weight: 600;
-    color: white;
-  }
-
-  .menu {
-    ul {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s;
-      &:hover {
-        color: lighten($primary-color, 10%);
-      }
-    }
-    /* Per mobile, il menu sarà nascosto di default */
-    @media (max-width: 768px) {
-      display: none;
-      &.open {
-        display: block;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: $primary-color;
-        ul {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    }
+    font-size: 1.5rem;
   }
 
   .mobile-menu-toggle {
     display: none;
     background: none;
     border: none;
-    font-size: 24px;
-    color: white;
+    font-size: 1.5rem;
+    color: #fff;
     cursor: pointer;
-    @media (max-width: 768px) {
-      display: block;
+  }
+
+  .menu {
+    ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      li a {
+        color: #fff;
+        text-decoration: none;
+        &:hover {
+          color: lighten($primary-color, 20%);
+        }
+      }
+    }
+    &.open {
+      /* Per mobile, quando aperto */
     }
   }
 
-  .social-icons {
-    a img {
-      width: 24px;
-      height: 24px;
-      transition: opacity 0.3s;
-      &:hover {
-        opacity: 0.7;
+  @media (max-width: 768px) {
+    .mobile-menu-toggle {
+      display: block;
+    }
+    .menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: $primary-color;
+      ul {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 0;
+      }
+      &.open {
+        display: block;
       }
     }
   }
